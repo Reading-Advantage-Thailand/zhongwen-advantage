@@ -1,0 +1,14 @@
+node_modules
+.next
+.git
+.env*
+.dockerignore
+Dockerfile
+README.md
+.eslintrc*
+*.log
+.vscode
+coverage
+.github
+*.md
+.gitignore

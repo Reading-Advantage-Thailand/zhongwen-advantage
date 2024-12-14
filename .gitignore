@@ -34,3 +34,11 @@ next-env.d.ts
 
 # Source repository for reference
 /ra-source
+
+# Sensitive files
+firebase-service-account.json
+*.key
+*.pem
+.env
+.env.*
+!.env.example
