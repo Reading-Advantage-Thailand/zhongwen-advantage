@@ -1,241 +1,304 @@
-# Zhongwen Advantage Development Todo
+# Tutor Advantage Development Todo
 
-## Phase 0: Documentation Setup
+## Documentation Usage and Maintenance
 
-- [ ] Create documentation structure
+IMPORTANT: Before starting any task:
 
-  - [ ] Set up `/docs` directory structure
-  - [ ] Create documentation templates
-  - [ ] Set up documentation standards
+1. Read all relevant files in `/docs/standards/` to ensure compliance with project standards
+2. Read any files in `/docs/core-libraries/` that pertain to your current task
+3. Update documentation whenever:
+   - You encounter an issue related to project standards
+   - You discover new patterns or best practices
+   - You find errors or outdated information
+   - You implement new features that require documentation
+4. Update the task completion status as tasks are completed.
 
-- [ ] Core Library Documentation
+This documentation-first approach ensures consistency, reduces errors, and maintains high code quality across the project.
 
-  - [ ] shadcn/ui documentation and component tracking
-  - [ ] Vercel AI SDK documentation
-  - [ ] next-intl documentation
-  - [ ] Prisma documentation and schema standards
-  - [ ] Framer Motion animation standards
-  - [ ] NextAuth.js implementation patterns
-  - [ ] Tailwind CSS standards and theming
+## Phase 1: Foundation Setup (Months 1-2)
 
-- [ ] Project Standards Documentation
-  - [ ] Code style guide
-  - [ ] Git workflow documentation
-  - [ ] Testing standards
-  - [ ] Accessibility requirements
-  - [ ] Performance benchmarks
+### Project Initialization
 
-## Phase 1: Foundation Setup
+- [x] Delete all existing Next.js from previous project mock-up
+- [x] Create Next.js 14 project with TypeScript
+  - [x] Configure Tailwind CSS and shadcn/ui
+  - [x] Set up ESLint and Prettier
+  - [x] Create comprehensive .env.example
+- [x] Initialize Git repository
+  - [ ] Set up branch protection rules
+  - [ ] Configure conventional commits
+  - [ ] Document Git workflow
 
-- [ ] Project Initialization
+### Database Setup
 
-  - [ ] Create Next.js 14 project with TypeScript
-  - [ ] Configure Tailwind CSS and shadcn/ui
-  - [ ] Set up ESLint and Prettier
-  - [ ] Initialize Git repository
-  - [ ] Push to GitHub with branch protection rules
-  - [ ] Create comprehensive .env.example
+- [ ] Set up a local SQLite database for development.
+- [ ] Set up PostgreSQL on Google Cloud SQL
+- [ ] Install and configure Prisma ORM
+- [ ] Design initial schema
+  - [ ] Users and roles
+  - [ ] MLM network structure
+  - [ ] Lessons and progress
+  - [ ] Revenue tracking
+- [ ] Set up database migrations workflow
+- [ ] Create seed data scripts
+- [ ] Configure connection pooling
 
-- [ ] Database Setup
+### Authentication System
 
-  - [ ] Set up SQLite database for dev branch
-  - [ ] Set up PostgreSQL on Google Cloud SQL
-  - [ ] Install and configure Prisma ORM
-  - [ ] Design initial schema (users, lessons, progress)
-  - [ ] Set up database migrations workflow
-  - [ ] Create seed data scripts
-  - [ ] Configure connection pooling
+- [x] Set up NextAuth.js
+  > Implemented with GitHub provider. Basic configuration in place.
+- [x] Create authentication middleware
+  > Comprehensive middleware implementation with public/private route protection and auth redirections.
+- [✓] Set up protected routes
+  > Basic implementation in middleware.ts with public/private route handling. Needs more comprehensive coverage for specific role-based routes.
+- [ ] Implement user session management
+  > Basic session handling exists through NextAuth but needs enhancement for custom requirements.
+- [ ] Create auth context provider
+- [ ] Design role-based access control
 
-- [ ] Authentication System
+### Internationalization
 
-  - [ ] Set up Firebase project integration
-  - [ ] Implement Firebase Admin SDK
-  - [ ] Create authentication middleware
-  - [ ] Set up protected routes
-  - [ ] Implement user session management
-  - [ ] Create auth context provider
+- [x] Set up next-intl
+  > Fully configured with routing and middleware integration.
+- [x] Configure language detection
+  > Implemented through next-intl middleware with locale detection and routing.
+- [x] Create translation files (EN, TH, ZH)
+  > Complete message files structure for all three languages in place.
+- [x] Implement language switcher
+  > Functional implementation with locale switching capabilities.
+- [ ] Set up translation management workflow
+  > Need to establish process for managing and updating translations.
 
-- [ ] Internationalization
+### Legal Requirements
 
-  - [ ] Set up next-intl
-  - [ ] Configure language detection
-  - [ ] Create translation files (EN, ZH-CN, ZH-TW)
-  - [ ] Implement language switcher
-  - [ ] Set up translation management workflow
+- [ ] Create privacy policy pages (EN, TH, ZH)
+- [ ] Implement privacy acceptance flow
+- [ ] Set up cookie consent system
+- [ ] Create terms of service pages
+- [ ] Implement data deletion requests
+- [ ] Add consent tracking system
+- [ ] Create MLM agreement documents
 
-- [ ] Legal Requirements
+### CI/CD Setup
 
-  - [ ] Create privacy policy pages (all languages)
-  - [ ] Implement privacy acceptance flow
-  - [ ] Set up cookie consent system
-  - [ ] Create terms of service pages
-  - [ ] Implement data deletion requests
-  - [ ] Add consent tracking system
+- [ ] Configure GitHub Actions
+  - [ ] Lint and test pipeline
+  - [ ] Database migration pipeline
+  - [ ] Test environment deployment
+  - [ ] Production deployment
+- [ ] Set up Google Cloud Run environments
+- [ ] Configure domain and SSL
+- [ ] Set up monitoring and logging
+- [ ] Configure error tracking (Sentry)
 
-- [ ] CI/CD Setup
-  - [ ] Configure GitHub Actions for dev / testing / production
-    - [ ] Lint and test pipeline
-    - [ ] Database migration pipeline
-    - [ ] Test environment deployment
-    - [ ] Production deployment
-  - [ ] Set up Google Cloud Run environments
-  - [ ] Configure domain and SSL
-  - [ ] Set up monitoring and logging
+## Phase 2: Core Learning System (Months 3-5)
 
-## Phase 2: Core Learning System
+### Content Management
 
-- [ ] Content Management
+- [ ] Design CEFR-aligned content hierarchy
+- [ ] Create content metadata structure
+- [ ] Build admin content editor
+- [ ] Implement content versioning
+- [ ] Set up AI content generation pipeline
+- [ ] Create content review workflow
 
-  - [ ] Design content hierarchy system
-  - [ ] Create content metadata structure
-  - [ ] Build admin content editor
-  - [ ] Implement content versioning
-  - [ ] Set up content deployment pipeline
+### Learning Management System
 
-- [ ] User Progress System
+- [ ] Build lesson delivery system
+- [ ] Create progress tracking system
+- [ ] Implement XP and rewards
+- [ ] Design achievement system
+- [ ] Build progress visualizations
+- [ ] Create study history tracking
 
-  - [ ] Create progress tracking system
-  - [ ] Implement XP calculation
-  - [ ] Design achievement system
-  - [ ] Build progress visualizations
-  - [ ] Create study history tracking
+### Tutor Tools
 
-- [ ] Placement System
-  - [ ] Create placement test framework
-  - [ ] Design adaptive questioning
-  - [ ] Implement scoring algorithm
-  - [ ] Build results analysis
-  - [ ] Create level placement logic
+- [ ] Build lesson planning interface
+- [ ] Create scheduling system
+- [ ] Implement resource management
+- [ ] Build tutor analytics dashboard
+- [ ] Create tutor training modules
+- [ ] Implement tutor certification system
 
-## Phase 3: Chinese Language Features
+### MLM System
 
-- [ ] Character Learning System
+- [ ] Design network structure tracking
+- [ ] Create commission calculation engine
+- [ ] Build performance analytics
+- [ ] Implement transparency reports
+- [ ] Create qualification tracking
+- [ ] Build network visualization tools
 
-  - [ ] Build stroke order animations
-  - [ ] Create character breakdown system
-  - [ ] Implement radical learning
-  - [ ] Set up handwriting recognition
-  - [ ] Create character practice exercises
+## Phase 3: Enhanced Features (Months 6-8)
 
-- [ ] Pronunciation System
+### Interactive Learning Features
 
-  - [ ] Implement text-to-speech
-  - [ ] Create tone practice exercises
-  - [ ] Build pronunciation feedback
-  - [ ] Set up audio recording system
-  - [ ] Design listening exercises
+- [ ] Implement gamification system
+  - [ ] Points and XP system
+  - [ ] Badges and achievements
+  - [ ] Leaderboards
+  - [ ] Streak tracking
+- [ ] Build interactive exercises
+  - [ ] Reading comprehension
+  - [ ] Vocabulary practice
+  - [ ] Grammar exercises
+  - [ ] Speaking activities
+- [ ] Create audio integration
+- [ ] Implement real-time feedback
 
-- [ ] Reading System
-  - [ ] Create extensive reading interface
-  - [ ] Implement vocabulary lookup
-  - [ ] Build reading progress tracking
-  - [ ] Design comprehension checks
-  - [ ] Create difficulty analysis
+### Assessment System
 
-## Phase 4: Exercise System
+- [ ] Create placement test framework
+- [ ] Build automated testing system
+- [ ] Implement adaptive questioning
+- [ ] Create progress reports
+- [ ] Design performance analytics
+- [ ] Build feedback collection
 
-- [ ] Core Exercise Types
+### Communication Tools
 
-  - [ ] Multiple choice system
-  - [ ] Writing exercises
-  - [ ] Listening comprehension
-  - [ ] Speaking practice
-  - [ ] Grammar drills
-  - [ ] Character writing
+- [ ] Build messaging system
+- [ ] Create notification system
+- [ ] Implement community forums
+- [ ] Build feedback and rating system
+- [ ] Create tutor-student chat
+- [ ] Implement parent communication
 
-- [ ] Spaced Repetition
-  - [ ] Design SRS algorithm
-  - [ ] Create review scheduler
-  - [ ] Implement progress tracking
-  - [ ] Build review interface
-  - [ ] Set up performance analytics
+## Phase 4: Pilot Testing (Months 9-10)
 
-## Phase 5: Gamification
+### Testing Infrastructure
 
-- [ ] Achievement System
+- [ ] Set up testing environment
+- [ ] Implement comprehensive logging
+- [ ] Create testing documentation
+- [ ] Build feedback collection tools
+- [ ] Set up A/B testing framework
+- [ ] Create user testing protocols
 
-  - [ ] Design achievement framework
-  - [ ] Create reward system
-  - [ ] Implement progress tracking
-  - [ ] Build notification system
-  - [ ] Create achievement UI
+### Performance Optimization
 
-- [ ] Social Features
-  - [ ] Create leaderboards
-  - [ ] Implement streak tracking
-  - [ ] Build social sharing
-  - [ ] Create friend system
-  - [ ] Design social challenges
+- [ ] Implement caching strategies
+- [ ] Optimize database queries
+- [ ] Configure CDN
+- [ ] Set up performance monitoring
+- [ ] Optimize asset delivery
+- [ ] Implement lazy loading
 
-## Phase 6: Analytics and Optimization
+## Phase 5: Launch Preparation (Months 11-12)
 
-- [ ] Analytics Implementation
+### Marketing Integration
 
-  - [ ] Set up user tracking
-  - [ ] Create learning analytics
-  - [ ] Implement performance monitoring
-  - [ ] Build reporting system
-  - [ ] Create admin dashboard
+- [ ] Build landing pages
+- [ ] Implement SEO optimizations
+- [ ] Create onboarding flows
+- [ ] Set up analytics tracking
+- [ ] Design email campaigns
+- [ ] Create promotional materials
 
-- [ ] Performance Optimization
-  - [ ] Implement caching strategy
-  - [ ] Optimize asset delivery
-  - [ ] Improve load times
-  - [ ] Optimize database queries
-  - [ ] Set up CDN
+### Support Systems
 
-## Technical Requirements
+- [ ] Build help center
+- [ ] Create documentation
+- [ ] Implement support ticket system
+- [ ] Set up monitoring alerts
+- [ ] Create training materials
+- [ ] Build knowledge base
 
-- **Frontend**
+---
 
-  - Next.js 14 with App Router
-  - TypeScript
+## Technical Stack & Architecture Considerations
+
+### Frontend
+
+- **Framework**: Next.js 14 with App Router
+- **Styling**:
   - Tailwind CSS
   - shadcn/ui components
   - Framer Motion animations
+- **State Management**:
+  - React Server Components
+  - Zustand for client state
+- **Forms**: React Hook Form + Zod
+- **Internationalization**: next-intl
 
-- **Backend**
+### Backend
 
-  - PostgreSQL database
-  - Prisma ORM
-  - Firebase Authentication
-  - Google Cloud Run
-  - next-intl for translations
+- **API**: Next.js API routes
+- **Database**: PostgreSQL with Prisma ORM
+- **Authentication**: NextAuth.js
+- **Storage**: GCP Cloud Storage
+- **AI**: OpenAI API integration
 
-- **Infrastructure**
+### Infrastructure
 
-  - GitHub for version control
-  - GitHub Actions for CI/CD
-  - Google Cloud Platform
-  - Cloud SQL for PostgreSQL
-  - Cloud Storage for media
+- **Cloud Platform**: Google Cloud Platform
+  - Cloud Run
+  - Cloud SQL
+  - Cloud Storage
+  - Cloud CDN
+- **CI/CD**: GitHub Actions
+- **Monitoring**:
+  - Sentry for error tracking
+  - Google Analytics 4
+  - Custom learning analytics
 
-- **Development Practices**
-  - Git branch protection
+### Design System
+
+- **Theme**:
+  - Light/Dark modes
+  - Thai-inspired color palette
+  - Accessible color contrast
+- **Typography**:
+  - Inter for Latin text
+  - Noto Sans Thai for Thai text
+- **Components**: shadcn/ui base
+- **Animations**: Framer Motion
+
+### Development Practices
+
+- **Git Workflow**:
+  - Protected main branch
+  - Feature branch workflow
   - Pull request reviews
-  - Automated testing
   - Conventional commits
-  - Semantic versioning
+- **Testing**:
+  - Jest
+  - Cypress
+  - Playwright
+- **Code Quality**:
+  - TypeScript strict mode
+  - ESLint + Prettier
+  - Husky pre-commit hooks
 
-## Non-Functional Requirements
+### Non-Functional Requirements
 
 - Mobile-responsive design
-- Accessible (WCAG 2.1 AA)
-- <2s initial page load
+- WCAG 2.1 AA compliance
+- Initial load time <2s
 - 99.9% uptime
-- Secure data handling
-- GDPR compliance
+- GDPR & PDPA compliance
 - Regular backups
-- Error monitoring
-- Performance analytics
+- Comprehensive error monitoring
 
-## Future Considerations
+### Security
+
+- **Authentication**: NextAuth.js
+- **Authorization**: RBAC
+- **Data Protection**:
+  - Encryption at rest
+  - HTTPS only
+  - Input validation
+- **Compliance**:
+  - GDPR
+  - PDPA (Thai)
+
+### Future Considerations
 
 - Mobile app development
-- Additional language interfaces
-- Teacher dashboard
-- Content marketplace
-- API for third-party integration
-- Virtual classroom features
-- AI-powered tutoring
 - Offline support
+- Virtual classroom features
+- Advanced AI tutoring
+- Content marketplace
+- Third-party API
+- Video lessons integration
+- Real-time collaboration tools
