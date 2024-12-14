@@ -52,40 +52,71 @@
 │       └── users/       # User management
 ```
 
-## Recent Changes
+## Development Guidelines
 
-### Components
+### Task Management System
 
-1. Navigation Components (Completed)
+#### Task Creation and Structure
 
-   - Imported and adapted main-nav.tsx
-   - Imported and adapted mobile-nav.tsx
-   - Imported and adapted sidebar-nav.tsx
-   - Created navigation index for easy imports
+- Tasks are created using the create-task-issue.ts script
+- Each task follows a standardized template (Issue #5) that includes:
+  - Components to import/modify
+  - Detailed task breakdown
+  - Technical considerations
+  - Documentation requirements
 
-2. UI Components
+#### Task Workflow
 
-   - Added Button component using shadcn/ui
-   - Set up with proper styling and variants
+1. Starting a Task
 
-3. Landing Page
-   - Implemented responsive hero section
-   - Added features showcase
-   - Added statistics display
-   - Added learning path section
-   - Added call-to-action sections
+   - Visit the GitHub issue
+   - Switch to the task-specific branch
+   - Review technical considerations
+   - Update project board status
 
-### Configuration Updates
+2. During Development
 
-1. Styling
+   - Follow task breakdown sequence
+   - Update currentTask.md progress
+   - Make atomic commits with clear messages
+   - Document technical decisions
 
-   - Updated globals.css with shadcn theme variables
-   - Added Tailwind configuration for shadcn components
-   - Set up dark mode support
+3. Task Completion
+   - Verify all tasks complete
+   - Update documentation
+   - Complete testing
+   - Update project board
+   - Create pull request
 
-2. TypeScript
-   - Updated tsconfig.json with proper path aliases
-   - Added necessary type definitions
+#### Documentation Updates
+
+- currentTask.md: Tracks current task progress
+- projectRoadmap.md: Overall project progress
+- techStack.md: Technical decisions and dependencies
+- codebaseSummary.md: System architecture and changes
+
+### Import Process
+
+1. Copy original component/route structure
+2. Analyze Chinese language requirements
+3. Modify for Chinese support
+4. Test functionality
+5. Document changes
+
+### Code Organization
+
+- Follow Reading Advantage's route group structure
+- Maintain clear separation of concerns
+- Document all modifications
+- Keep Chinese-specific features organized
+
+### Testing Strategy
+
+- Unit tests for imported components
+- Integration tests for Chinese features
+- Route testing
+- API endpoint testing
+- Performance testing
 
 ## Data Flow Patterns
 
@@ -157,30 +188,40 @@ Audio Synthesis -> User Interface
 - Pronunciation
 - Character Progress
 
-## Development Guidelines
+## Recent Changes
 
-### Import Process
+### Components
 
-1. Copy original component/route structure
-2. Analyze Chinese language requirements
-3. Modify for Chinese support
-4. Test functionality
-5. Document changes
+1. Navigation Components (Completed)
 
-### Code Organization
+   - Imported and adapted main-nav.tsx
+   - Imported and adapted mobile-nav.tsx
+   - Imported and adapted sidebar-nav.tsx
+   - Created navigation index for easy imports
 
-- Follow Reading Advantage's route group structure
-- Maintain clear separation of concerns
-- Document all modifications
-- Keep Chinese-specific features organized
+2. UI Components
 
-### Testing Strategy
+   - Added Button component using shadcn/ui
+   - Set up with proper styling and variants
 
-- Unit tests for imported components
-- Integration tests for Chinese features
-- Route testing
-- API endpoint testing
-- Performance testing
+3. Landing Page
+   - Implemented responsive hero section
+   - Added features showcase
+   - Added statistics display
+   - Added learning path section
+   - Added call-to-action sections
+
+### Configuration Updates
+
+1. Styling
+
+   - Updated globals.css with shadcn theme variables
+   - Added Tailwind configuration for shadcn components
+   - Set up dark mode support
+
+2. TypeScript
+   - Updated tsconfig.json with proper path aliases
+   - Added necessary type definitions
 
 ## Future Considerations
 
