@@ -31,40 +31,58 @@ export function UserSignInForm({ className, ...props }: UserAuthFormProps) {
     password: ""
   });
 
-  const handleOAuthSignIn = (provider: AuthProvider) => {
-    signInWithPopup(firebaseAuth, provider)
-      .then((credential) => {
-        if (
-          credential.user &&
-          typeof credential.user.getIdToken === "function"
-        ) {
-          return credential.user.getIdToken(true);
-        } else {
-          throw new Error("Invalid user object or getIdToken method not found");
-        }
-      })
-      .then((idToken) => {
-        signIn("credentials", {
-          idToken,
-          //callbackUrl: "/student/read",
-        });
-      })
-      .catch((err) => {
-        let customMessage;
-        switch (err.code) {
-          case "auth/invalid-credential":
-            customMessage =
-              "The provided credential is invalid. This can happen if it is malformed, expired, or the user account does not exist.";
-            break;
-          case "auth/too-many-requests":
-            customMessage =
-              "Too many unsuccessful login attempts. Please try again later.";
-            break;
-          default:
-            customMessage = "Something went wrong.";
-        }
-        setError(customMessage);
+  const handleOAuthSignIn = async (provider: AuthProvider) => {
+    try {
+      setIsLoading(true);
+      setError("");
+      
+      console.log("Starting Google sign-in process...");
+      const credential = await signInWithPopup(firebaseAuth, provider);
+      
+      if (!credential.user || typeof credential.user.getIdToken !== "function") {
+        throw new Error("Invalid user object or getIdToken method not found");
+      }
+      
+      console.log("Got Firebase credential, getting ID token...");
+      const idToken = await credential.user.getIdToken(true);
+      
+      console.log("Got ID token, calling NextAuth signIn...");
+      const result = await signIn("credentials", {
+        idToken,
+        redirect: false
       });
+      
+      console.log("NextAuth sign-in result:", result);
+      if (result?.error) {
+        throw new Error(result.error);
+      }
+      
+      // Redirect on success
+      window.location.href = "/student/read";
+      
+    } catch (err: any) {
+      console.error("Sign-in error:", err);
+      let customMessage;
+      switch (err.code) {
+        case "auth/invalid-credential":
+          customMessage = "Invalid credentials. Please try again.";
+          break;
+        case "auth/popup-closed-by-user":
+          customMessage = "Sign-in popup was closed. Please try again.";
+          break;
+        case "auth/popup-blocked":
+          customMessage = "Sign-in popup was blocked. Please allow popups and try again.";
+          break;
+        case "auth/too-many-requests":
+          customMessage = "Too many unsuccessful login attempts. Please try again later.";
+          break;
+        default:
+          customMessage = `Authentication failed: ${err.message || "Something went wrong"}`;
+      }
+      setError(customMessage);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   async function onSubmit(event: React.SyntheticEvent) {
