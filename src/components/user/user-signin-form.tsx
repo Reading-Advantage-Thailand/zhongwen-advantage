@@ -26,8 +26,10 @@ export function UserSignInForm({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>("");
   const googleProvider = new GoogleAuthProvider();
-  const [email, setEmail] = React.useState<string>("");
-  const [password, setPassword] = React.useState<string>("");
+  const [formData, setFormData] = React.useState({
+    email: "",
+    password: ""
+  });
 
   const handleOAuthSignIn = (provider: AuthProvider) => {
     signInWithPopup(firebaseAuth, provider)
@@ -75,7 +77,7 @@ export function UserSignInForm({ className, ...props }: UserAuthFormProps) {
     // };
     // const email = target.email.value;
     // const password = target.password.value;
-    signInWithEmailAndPassword(firebaseAuth, email, password)
+    signInWithEmailAndPassword(firebaseAuth, formData.email, formData.password)
       .then((credential) => {
         if (
           credential.user &&
@@ -128,8 +130,8 @@ export function UserSignInForm({ className, ...props }: UserAuthFormProps) {
               autoCapitalize="none"
               autoComplete="email"
               autoCorrect="off"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={formData.email}
+              onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
               disabled={isLoading}
               required
             />
@@ -145,8 +147,8 @@ export function UserSignInForm({ className, ...props }: UserAuthFormProps) {
               autoCapitalize="none"
               autoComplete="password"
               autoCorrect="off"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={formData.password}
+              onChange={(e) => setFormData(prev => ({ ...prev, password: e.target.value }))}
               disabled={isLoading}
               required
             />

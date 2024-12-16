@@ -33,18 +33,14 @@ export function UserSignUpForm({ className, ...props }: UserAuthFormProps) {
     event.preventDefault();
     setIsLoading(true);
     setError("");
-    const target = event.target as typeof event.target & {
-      email: { value: string };
-      password: { value: string };
-      confirmPassword: { value: string };
-    };
-    const email = target.email.value;
-    const password =
-      target.password.value === target.confirmPassword.value
-        ? target.password.value
-        : null;
-    if (!password) {
-      setError("Password does not match");
+    const formData = new FormData(event.currentTarget as HTMLFormElement);
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
+    const confirmPassword = formData.get('confirmPassword') as string;
+    
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      setIsLoading(false);
       return;
     }
     createUserWithEmailAndPassword(firebaseAuth, email, password)
