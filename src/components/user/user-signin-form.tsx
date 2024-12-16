@@ -57,8 +57,8 @@ export function UserSignInForm({ className, ...props }: UserAuthFormProps) {
         throw new Error(result.error);
       }
       
-      // Redirect on success
-      window.location.href = "/student/read";
+      // Redirect to main landing page on success
+      window.location.href = "/";
       
     } catch (err: any) {
       console.error("Sign-in error:", err);
