@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import NextAuthSessionProvider from "@/providers/nextauth-session-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,9 @@ export const metadata: Metadata = {
       { url: "/apple-touch-icon.png" }
     ],
   },
+};
+
+export const viewport: Viewport = {
   themeColor: "#6b21a8",
 };
 
@@ -36,7 +40,11 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#6b21a8" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <NextAuthSessionProvider>
+          {children}
+        </NextAuthSessionProvider>
+      </body>
     </html>
   );
 }

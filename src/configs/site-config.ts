@@ -1,11 +1,11 @@
 import { SiteConfig } from "@/types";
 
 export const siteConfig: SiteConfig = {
-    name: "Zhongwen Advantage",
-    description: "Extensive reading app for Chinese language learning.",
-    url: "https://app.zhongwen-advantage.com",
-    ogImage: "/images/og-image.png", // We'll need to create this later
+    name: "Reading Advantage",
+    description: "Extensive reading app incorporating AI.",
+    url: "https://app.reading-advantage.com",
+    ogImage: "https://reading-advantage.web.app/images/og-image.png",
     link: {
-        github: "https://github.com/Reading-Advantage-Thailand/zhongwen-advantage",
+        github: "https://github.com/bodangren/reading-advantage",
     },
 }
