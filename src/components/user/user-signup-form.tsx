@@ -33,8 +33,10 @@ export function UserSignUpForm({ className, ...props }: UserAuthFormProps) {
     event.preventDefault();
     setIsLoading(true);
     setError("");
-    const formData = new FormData(event.currentTarget as HTMLFormElement);
-    const email = formData.get('email') as string;
+    const target = event.target as typeof event.target & {
+        email: { value: string };
+    };
+    const email = target.email.value;
     const password = formData.get('password') as string;
     const confirmPassword = formData.get('confirmPassword') as string;
     
