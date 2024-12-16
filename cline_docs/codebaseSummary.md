@@ -19,12 +19,14 @@
 │   ├── article/          # Imported with Chinese text support
 │   ├── audio/            # Enhanced for Chinese pronunciation
 │   ├── navigation/       # Direct import - Completed
-│   │   ├── main-nav.tsx
-│   │   ├── mobile-nav.tsx
+│   │   ├── main-nav.tsx    # Updated with auth UI
+│   │   ├── mobile-nav.tsx  # Updated with auth UI
 │   │   ├── sidebar-nav.tsx
 │   │   └── index.ts
 │   ├── ui/              # shadcn components
-│   │   └── button.tsx   # Implemented
+│   │   ├── avatar.tsx   # Used for user profile display
+│   │   ├── button.tsx   # Implemented
+│   │   └── dropdown-menu.tsx # Used for user menu
 │   ├── user/            # Direct import (Pending)
 │   ├── dashboard/       # Modified for Chinese learning metrics
 │   ├── exercise/        # Adapted for Chinese exercises
@@ -37,6 +39,13 @@
 │       ├── tone-practice/
 │       ├── pinyin-display/
 │       └── audio-recording/
+│
+├── lib/                 # Utility functions and configurations
+│   ├── firebase.ts     # Firebase initialization
+│   └── utils.ts        # Utility functions
+│
+├── hooks/              # Custom React hooks
+│   └── use-auth.ts    # Firebase authentication hook
 │
 ├── api/                  # API Routes
 │   └── v1/
@@ -140,7 +149,7 @@ Audio Synthesis -> User Interface
 - next-intl for internationalization
 - shadcn/ui for components
 - Prisma for database (pending)
-- Firebase for authentication (pending)
+- Firebase for authentication (implemented)
 - NextAuth.js for session management (pending)
 
 ### Chinese Language Dependencies (Pending)
@@ -149,79 +158,39 @@ Audio Synthesis -> User Interface
 - chinese-tokenizer for text processing
 - pinyin-utils for pronunciation
 
-## API Structure (Following Reading Advantage)
-
-### Authentication
-
-- `/api/auth/[...nextauth]`
-
-### V1 API Endpoints
-
-- Activity tracking
-- Article management
-- Classroom operations
-- Level assessment
-- License management
-- User management
-- System dashboard
-
-### New Chinese-Specific Endpoints
-
-- Character data
-- Pronunciation guides
-- Stroke order information
-- Traditional/Simplified conversion
-
-## Database Schema
-
-### Core Tables (Adapted from Reading Advantage)
-
-- Users (enhanced for Chinese learning)
-- Articles (modified for Chinese content)
-- Questions (adapted for Chinese)
-- Progress (modified for character tracking)
-
-### New Chinese-Specific Tables
-
-- Characters
-- Radicals
-- Pronunciation
-- Character Progress
-
 ## Recent Changes
 
 ### Components
 
-1. Navigation Components (Completed)
+1. Navigation Components (Updated)
 
-   - Imported and adapted main-nav.tsx
-   - Imported and adapted mobile-nav.tsx
-   - Imported and adapted sidebar-nav.tsx
-   - Created navigation index for easy imports
+   - Enhanced main-nav.tsx with authentication UI
+   - Enhanced mobile-nav.tsx with authentication UI
+   - Added user avatar and dropdown menu
+   - Added login/signup buttons for unauthenticated users
 
-2. UI Components
+2. Authentication
 
-   - Added Button component using shadcn/ui
-   - Set up with proper styling and variants
+   - Implemented Firebase initialization
+   - Created useAuth hook for authentication state
+   - Added sign-out functionality
 
-3. Landing Page
-   - Implemented responsive hero section
-   - Added features showcase
-   - Added statistics display
-   - Added learning path section
-   - Added call-to-action sections
+3. UI Components
+   - Added Avatar component for user profile display
+   - Added Dropdown Menu for user actions
+   - Enhanced Button component with new variants
 
 ### Configuration Updates
 
-1. Styling
+1. Firebase Setup
 
-   - Updated globals.css with shadcn theme variables
-   - Added Tailwind configuration for shadcn components
-   - Set up dark mode support
+   - Added Firebase configuration
+   - Initialized Firebase app
+   - Set up authentication services
 
-2. TypeScript
-   - Updated tsconfig.json with proper path aliases
-   - Added necessary type definitions
+2. Environment Variables
+   - Added Firebase configuration variables
+   - Secured sensitive information
 
 ## Future Considerations
 
@@ -239,3 +208,10 @@ Audio Synthesis -> User Interface
 - Character database updates
 - Route optimization
 - Performance monitoring
+
+### Authentication Enhancements
+
+- Add additional authentication providers
+- Implement role-based access control
+- Add user profile management
+- Add account settings
