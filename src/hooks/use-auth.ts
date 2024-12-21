@@ -8,14 +8,21 @@ export function useAuth() {
 
   useEffect(() => {
     // Initialize Firebase
-    initFirebase();
-    const auth = getAuth();
+    const app = initFirebase();
+    const auth = getAuth(app);
 
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+      if (user) {
+        // User is signed in
+        setUser(user);
+      } else {
+        // User is signed out
+        setUser(null);
+      }
       setLoading(false);
     });
 
+    // Cleanup subscription on unmount
     return () => unsubscribe();
   }, []);
 

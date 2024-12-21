@@ -13,6 +13,7 @@ import {
   BarChartBig,
   Settings,
   LogOut,
+  Loader2,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -30,6 +31,7 @@ export const Icons = {
   report: BarChartBig,
   settings: Settings,
   logout: LogOut,
+  spinner: Loader2,
   logo: ({ ...props }: LucideProps) => (
     <svg
       version="1.0"
