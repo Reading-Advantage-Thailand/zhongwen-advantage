@@ -28,12 +28,201 @@ doc_update_rules:
     - include: ["components", "data_flow", "dependencies"]
 
 ## Task Management
-task_creation:
-  script: "./scripts/create-task-issue.ts"
-  template: "Issue #5"
-  branch_prefix: "task/"
+task_workflow:
+  creation:
+    script: "./scripts/create-task-issue.ts"
+    requirements:
+      - github_cli: "GitHub CLI (gh) must be installed"
+      - git: "Git must be initialized in the repository"
+      - permissions: "GitHub authentication configured in gh CLI"
+
+    execution:
+      command: 'ts-node create-task-issue.ts "Issue Title" "Issue Body"'
+      automated_actions:
+        - "Creates GitHub issue with provided title and body"
+        - "Creates and switches to task-specific branch"
+        - "Updates currentTask.md with issue details"
+        - "Adds standard workflow checklist to issue"
+
+    output:
+      - issue_url: "URL of created GitHub issue"
+      - branch_name: "task/{issue-number}-{sanitized-title}"
+      - current_task: "Updated currentTask.md file"
+
+    templates:
+      component_import:
+        name: "Import: {component_name}"
+        sections:
+          - description: "Component details and purpose"
+          - dependencies: "Required packages and components"
+          - modifications: "Chinese-specific adaptations needed"
+          - testing: "Test cases and scenarios"
+      feature:
+        name: "Feature: {feature_name}"
+        sections:
+          - description: "Feature overview and requirements"
+          - technical_specs: "Implementation details"
+          - testing: "Test scenarios and acceptance criteria"
+      bug:
+        name: "Bug: {bug_description}"
+        sections:
+          - description: "Bug details and reproduction steps"
+          - impact: "Affected features and severity"
+          - solution: "Proposed fix and implementation plan"
+
+  issue_tracking:
+    labels:
+      type:
+        - import: "Component import tasks"
+        - feature: "New feature development"
+        - bug: "Bug fixes and issues"
+        - docs: "Documentation updates"
+      priority:
+        - critical: "Needs immediate attention"
+        - high: "Important for next release"
+        - medium: "Standard priority"
+        - low: "Nice to have"
+      status:
+        - in_progress: "Currently being worked on"
+        - review: "Ready for code review"
+        - testing: "In QA/testing phase"
+        - blocked: "Blocked by dependencies"
+
+  branching:
+    naming:
+      format: "{type}/{issue-number}-{brief-description}"
+      types:
+        - import: "Component imports"
+        - feat: "New features"
+        - fix: "Bug fixes"
+        - docs: "Documentation"
+        - refactor: "Code refactoring"
+      examples:
+        - "import/123-user-profile-component"
+        - "feat/456-chinese-input-method"
+        - "fix/789-character-rendering"
+
+    workflow:
+      1_preparation:
+        - create_branch: "Create from main/development"
+        - update_branch: "Pull latest changes"
+        - review_requirements: "Check task requirements"
+
+      2_development:
+        - implement_changes: "Make necessary changes"
+        - run_tests: "Ensure tests pass"
+        - update_docs: "Update documentation"
+
+      3_review:
+        - create_pr: "Create pull request"
+        - address_feedback: "Handle review comments"
+        - update_changes: "Make requested changes"
+
+      4_completion:
+        - merge_pr: "Merge to target branch"
+        - delete_branch: "Clean up feature branch"
+        - update_tracking: "Update issue status"
+
+  progress_tracking:
+    milestones:
+      - name: "Component Import Phase"
+        criteria:
+          - "All essential components imported"
+          - "Tests passing"
+          - "Documentation updated"
+      - name: "Chinese Adaptation Phase"
+        criteria:
+          - "Language features implemented"
+          - "Performance optimized"
+          - "User testing completed"
+
+    metrics:
+      - completed_tasks: "Number of completed imports"
+      - test_coverage: "Code coverage percentage"
+      - review_time: "Average review completion time"
 
 ## Import Strategy
+import_process:
+  pre_import:
+    analysis:
+      - review_dependencies: "Check component dependencies and required packages"
+      - identify_modifications: "List Chinese-specific adaptations needed"
+      - assess_integration: "Evaluate integration points with existing components"
+    setup:
+      - create_test_environment: "Set up Jest and Testing Library"
+      - prepare_test_data: "Create mock data for Chinese language content"
+      - setup_ci_pipeline: "Configure GitHub Actions for automated testing"
+
+  testing_requirements:
+    unit_tests:
+      - component_rendering: "Test basic component rendering"
+      - props_validation: "Verify prop types and default values"
+      - state_management: "Test state updates and side effects"
+      - event_handlers: "Verify event handling and user interactions"
+      - error_handling: "Test error states and boundary conditions"
+    integration_tests:
+      - component_interaction: "Test interaction between related components"
+      - routing_logic: "Verify navigation and route protection"
+      - data_flow: "Test data passing between components"
+      - api_integration: "Verify API calls and data fetching"
+    chinese_specific_tests:
+      - character_rendering: "Test Chinese character display"
+      - font_loading: "Verify Chinese font loading performance"
+      - input_handling: "Test Chinese text input methods"
+      - rtl_support: "Verify right-to-left text support"
+
+  import_workflow:
+    1_preparation:
+      - create_feature_branch: "Create branch for component import"
+      - setup_test_files: "Create test files for component"
+      - document_requirements: "List component requirements and dependencies"
+
+    2_testing:
+      - write_tests: "Write tests before importing component"
+      - validate_tests: "Ensure tests fail appropriately"
+      - document_test_cases: "Document test scenarios and edge cases"
+
+    3_implementation:
+      - import_component: "Copy component to target directory"
+      - adapt_code: "Modify for Chinese language support"
+      - update_dependencies: "Update imports and dependencies"
+      - implement_changes: "Add Chinese-specific features"
+
+    4_verification:
+      - run_tests: "Run all tests to verify implementation"
+      - manual_testing: "Perform manual testing with Chinese content"
+      - performance_check: "Verify rendering performance"
+      - accessibility_audit: "Check accessibility compliance"
+
+    5_documentation:
+      - update_docs: "Update component documentation"
+      - add_examples: "Add usage examples with Chinese content"
+      - document_changes: "Document modifications made"
+
+    6_review:
+      - code_review: "Submit for peer review"
+      - address_feedback: "Address review comments"
+      - final_testing: "Perform final round of testing"
+
+    7_deployment:
+      - merge_code: "Merge to main branch"
+      - monitor_metrics: "Monitor performance metrics"
+      - gather_feedback: "Collect user feedback"
+
+  validation_checklist:
+    functionality:
+      - component_behavior: "Verify core functionality"
+      - chinese_support: "Check Chinese language features"
+      - error_handling: "Validate error states"
+    performance:
+      - load_time: "Measure initial load time"
+      - rendering_speed: "Check rendering performance"
+      - memory_usage: "Monitor memory consumption"
+    compatibility:
+      - browser_support: "Test across browsers"
+      - device_testing: "Verify mobile responsiveness"
+      - platform_check: "Test on different platforms"
+
 import_rules:
   direct_import:
     - verify: "component_compatibility"
@@ -45,12 +234,56 @@ import_rules:
 
 ## Code Organization
 directory_structure:
-  components:
-    - base: "./src/components"
-    - chinese_specific: "./src/components/character"
-  pages:
-    - base: "./src/app"
-    - route_groups: ["(admin)", "(auth)", "(student)", "(teacher)", "(system)"]
+  source:
+    base: "./ra-source"
+    web:
+      - app
+      - assets
+      - client
+      - components
+      - configs
+      - contexts
+      - data
+      - hooks
+      - lib
+      - locales
+      - public
+      - server
+      - store
+      - styles
+      - types
+      - utils
+
+  target:
+    base: "./src"
+    structure:
+      app:
+        - base: "./src/app"
+        - route_groups:
+            ["(admin)", "(auth)", "(student)", "(teacher)", "(system)"]
+      components:
+        - base: "./src/components"
+        - ui: "./src/components/ui"
+        - navigation: "./src/components/navigation"
+        - chinese_specific: "./src/components/character"
+      configs: "./src/configs"
+      hooks: "./src/hooks"
+      lib: "./src/lib"
+      types: "./src/types"
+
+  import_mapping:
+    components:
+      from: "./ra-source/web/components"
+      to: "./src/components"
+    pages:
+      from: "./ra-source/web/app"
+      to: "./src/app"
+    hooks:
+      from: "./ra-source/web/hooks"
+      to: "./src/hooks"
+    utils:
+      from: "./ra-source/web/utils"
+      to: "./src/lib"
 
 ## Testing Requirements
 test_types:

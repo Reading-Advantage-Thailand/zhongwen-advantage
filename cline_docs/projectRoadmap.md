@@ -4,7 +4,95 @@
 
 Maximize direct import of Reading Advantage's proven codebase, modifying components only where necessary for Chinese language support.
 
-## Import Strategy
+## Detailed Step-by-Step Plan for Imports & Adaptations
+
+1. **Identify the Import Target**
+
+   1. Determine whether the target is a **component**, **function**, or **page/route** from the Reading Advantage codebase.
+   2. Confirm if the target will need **direct import** (no modifications required) or **Chinese-specific adaptation** (e.g., text rendering, input handling).
+
+2. **Create or Update Task Documentation**
+
+   1. **Create a new issue** (via `./scripts/create-task-issue.ts`) using the appropriate template (**import**, **feature**, or **bug**).
+   2. **Document the objectives** of the import (e.g., “Import user-signin-form component”).
+   3. **Link the issue** to relevant sections in `projectRoadmap.md` or `currentTask.md`, noting if this relates to a milestone, adaptation, or direct import.
+
+3. **Set Up Test-Driven Development (TDD)**
+
+   1. **Write initial test scaffolding** in your test directories (`__tests__` or `test/` under `./src`).
+   2. If the component or function does not yet exist in the target codebase, create a test file (e.g., `user-signin-form.test.tsx`) containing **placeholder tests** that **initially fail**.
+   3. **List out critical test scenarios**:
+      - **For Direct Imports**: Focus on verifying the existing functionality works in the new environment (props, rendering, states).
+      - **For Chinese Adaptations**: Include tests for character rendering, pinyin generation, or any feature that might affect the standard logic.
+
+4. **Import Phase**
+
+   1. **Copy Source Files**:
+      - Move the file(s) from `./ra-source/web/[components|utils|hooks|app]` to the corresponding folder in `./src/[components|lib|hooks|app]`.
+      - Maintain the original file structure as much as possible (e.g., keep subfolder hierarchy consistent).
+   2. **Update Imports & References**:
+      - Replace any references to `@/ra-source/...` or RA-specific config with the Zhongwen Advantage equivalents (`@/src/...`).
+      - Validate that all required dependencies exist in `package.json`; if not, add them and update `techStack.md` as needed.
+
+5. **Initial Test Execution**
+
+   1. **Run Tests**: Execute the test suite (e.g., `yarn test` or `npm run test`).
+   2. **Review Failures**: Expect failing tests where additional Chinese-specific logic or environment differences appear.
+   3. **Fix Basic Issues**: Resolve immediate syntax errors or reference mismatches revealed by failing tests.
+
+6. **Adaptation Phase (If Required)**
+
+   1. **Chinese Localization & Features**:
+      - Integrate libraries like `chinese-tokenizer`, `pinyin-utils`, or custom solutions listed in `techStack.md`.
+      - Adjust UI to handle Chinese text fields, character display, or custom input validations.
+   2. **Refactor & Enhance**:
+      - Update function logic to accommodate character-based processing.
+      - Incorporate additional props or states for Chinese rendering (e.g., pinyin toggles, stroke order data).
+   3. **Test-Specific Adaptations**:
+      - Include tests for Chinese text input (e.g., verifying correct segmentation).
+      - Validate accessibility for Chinese content (e.g., ARIA labels for non-Latin characters).
+
+7. **Secondary Test Execution**
+
+   1. **Re-run Tests**: Once adaptation is done, confirm the previously failing tests pass.
+   2. **Add Edge-Case Tests**:
+      - Large paragraphs of Chinese text.
+      - Mixed Chinese and English input.
+      - Uncommon or archaic Chinese characters.
+   3. **Performance Check**: If relevant, run performance tests to ensure that character rendering or new dependencies do not degrade performance.
+
+8. **Documentation & Integration**
+
+   1. **Update `projectRoadmap.md`**: Mark tasks as complete or note any changes in scope or technology.
+   2. **Revise `currentTask.md`**: Reflect the final status of the import/adaptation.
+   3. **Adjust `codebaseSummary.md`**: Note any new file paths, dependencies, or structural changes introduced.
+   4. **Commit & Push**: Follow commit guidelines (atomic commits, reference the issue). Open a Pull Request for review.
+
+9. **Code Review & Finalization**
+
+   1. **Review**: Use peer/LLM review to spot missed edge cases or optimization issues.
+   2. **Address Feedback**: Make required revisions, ensuring tests remain green.
+   3. **Merge & Close**: Merge the PR into the main branch, close the GitHub issue, and **update `projectRoadmap.md`** with the completion details.
+
+10. **Deployment & Monitoring**
+11. **Staging Deployment**: Deploy to a staging environment (on Google Cloud Run) to verify Chinese fonts, layout, and resource usage.
+12. **Production Deployment**: Once validated, push to production.
+13. **Post-Deployment Checks**: Monitor performance, gather user feedback, and update metrics (e.g., test coverage, load time).
+
+---
+
+### Example Workflow Summary
+
+1. **Create Issue** via `create-task-issue.ts`: _“Import & Adapt: article-content.tsx for Chinese”_
+2. **Set up TDD** by writing failing tests for Chinese text rendering.
+3. **Import** the RA article-content.tsx into `./src/components/article/article-content.tsx`.
+4. **Run Tests** to confirm initial failures.
+5. **Adapt** the code with `chinese-tokenizer`, add pinyin toggles, and handle strokes if needed.
+6. **Refine Tests** until they pass successfully.
+7. **Document** changes in the roadmap, codebase summary, and current task.
+8. **Open PR** for review.
+9. **Merge** and mark the issue as resolved.
+10. **Deploy** and monitor performance in production.
 
 ### 1. Direct Imports (No Modification Needed)
 
