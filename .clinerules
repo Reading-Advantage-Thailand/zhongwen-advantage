@@ -1,0 +1,109 @@
+# Cline Rules Configuration
+
+## Project Context
+project_name: "Zhongwen Advantage"
+project_type: "Educational Platform"
+base_framework: "Next.js 14"
+primary_language: "TypeScript"
+documentation_path: "./cline_docs"
+
+## Documentation Rules
+essential_docs:
+  - projectRoadmap.md
+  - currentTask.md
+  - techStack.md
+  - codebaseSummary.md
+
+doc_update_rules:
+  projectRoadmap:
+    - update_on: ["task_completion", "goal_change"]
+    - track_in: "completed_tasks"
+  currentTask:
+    - update_on: ["subtask_completion", "status_change"]
+    - reference: "projectRoadmap"
+  techStack:
+    - update_on: ["technology_decision", "dependency_change"]
+  codebaseSummary:
+    - update_on: ["structure_change", "significant_update"]
+    - include: ["components", "data_flow", "dependencies"]
+
+## Task Management
+task_creation:
+  script: "./scripts/create-task-issue.ts"
+  template: "Issue #5"
+  branch_prefix: "task/"
+
+## Import Strategy
+import_rules:
+  direct_import:
+    - verify: "component_compatibility"
+    - maintain: "original_structure"
+  chinese_adaptation:
+    - verify: "character_support"
+    - add: "chinese_specific_features"
+    - test: "language_compatibility"
+
+## Code Organization
+directory_structure:
+  components:
+    - base: "./src/components"
+    - chinese_specific: "./src/components/character"
+  pages:
+    - base: "./src/app"
+    - route_groups: ["(admin)", "(auth)", "(student)", "(teacher)", "(system)"]
+
+## Testing Requirements
+test_types:
+  - unit_tests: "imported_components"
+  - integration_tests: "chinese_features"
+  - performance_tests: "character_rendering"
+
+## Development Guidelines
+commit_rules:
+  - atomic_commits: true
+  - reference_issue: true
+  - update_docs: true
+
+code_standards:
+  - follow: "Reading Advantage patterns"
+  - maintain: "type safety"
+  - ensure: "accessibility"
+  - optimize: "chinese text rendering"
+
+## Authentication
+auth_provider: "Firebase"
+auth_features:
+  - user_roles
+  - session_management
+  - secure_routes
+
+## Chinese-Specific Features
+chinese_support:
+  character_processing:
+    - stroke_order
+    - radical_breakdown
+    - pinyin_support
+  audio_features:
+    - pronunciation
+    - tone_practice
+    - recording
+
+## Performance Guidelines
+optimization_targets:
+  - chinese_font_loading
+  - character_rendering
+  - audio_processing
+  - cache_strategy
+
+## Environment
+required_env_vars:
+  - FIREBASE_CONFIG
+  - DATABASE_URL
+  - NEXT_PUBLIC_API_URL
+
+## Deployment
+deployment_platform: "Google Cloud Run"
+build_process:
+  - verify_chinese_support
+  - optimize_assets
+  - check_dependencies
