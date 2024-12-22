@@ -1,7 +1,64 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { getI18n } from "@/locales/server"
 
-export default function Home() {
+export default async function Home() {
+  const t = await getI18n()
+
+  const features = [
+    {
+      title: t("pages.indexPage.features.sections.characterLearning.title"),
+      features: [
+        "Stroke order visualization",
+        "Character breakdown analysis",
+        "Radical learning components",
+        "Traditional/Simplified support",
+      ],
+    },
+    {
+      title: t("pages.indexPage.features.sections.pronunciation.title"),
+      features: [
+        "Pinyin display and practice",
+        "Tone recognition exercises",
+        "Audio recording capabilities",
+        "Speech analysis tools",
+      ],
+    },
+    {
+      title: t("pages.indexPage.features.sections.reading.title"),
+      features: [
+        "Chinese text optimization",
+        "Character-based progress",
+        "Chinese-specific exercises",
+        "Adaptive difficulty",
+      ],
+    },
+    {
+      title: t("pages.indexPage.features.sections.management.title"),
+      features: [
+        "Classroom management",
+        "Student progress tracking",
+        "Assignment creation",
+        "Performance analytics",
+      ],
+    },
+  ]
+
+  const techSections = [
+    {
+      title: t("pages.indexPage.technology.sections.frontend.title"),
+      description: t("pages.indexPage.technology.sections.frontend.description"),
+    },
+    {
+      title: t("pages.indexPage.technology.sections.backend.title"),
+      description: t("pages.indexPage.technology.sections.backend.description"),
+    },
+    {
+      title: t("pages.indexPage.technology.sections.processing.title"),
+      description: t("pages.indexPage.technology.sections.processing.description"),
+    },
+  ]
+
   return (
     <>
       {/* Hero Section */}
@@ -17,14 +74,14 @@ export default function Home() {
             />
           </div>
           <h1 className="font-heading text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
-            Master Chinese with Confidence
+            {t("pages.indexPage.hero.title")}
           </h1>
           <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-            A specialized adaptation of Reading Advantage, designed specifically for Chinese language learning
+            {t("pages.indexPage.hero.description")}
           </p>
           <div className="flex gap-4">
-            <Button size="lg" className="h-12">Start Learning Now</Button>
-            <Button size="lg" variant="outline" className="h-12">Take Placement Test</Button>
+            <Button size="lg" className="h-12">{t("pages.indexPage.hero.startLearningButton")}</Button>
+            <Button size="lg" variant="outline" className="h-12">{t("pages.indexPage.hero.placementTestButton")}</Button>
           </div>
         </div>
       </section>
@@ -33,51 +90,14 @@ export default function Home() {
       <section className="container py-20">
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
           <h2 className="font-heading text-3xl font-bold leading-[1.1] sm:text-4xl md:text-5xl">
-            Comprehensive Learning Features
+            {t("pages.indexPage.features.title")}
           </h2>
           <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            Our platform combines advanced technology with proven learning methods
+            {t("pages.indexPage.features.description")}
           </p>
         </div>
         <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-2 mt-12">
-          {[
-            {
-              title: "Character Learning System",
-              features: [
-                "Stroke order visualization",
-                "Character breakdown analysis",
-                "Radical learning components",
-                "Traditional/Simplified support",
-              ],
-            },
-            {
-              title: "Pronunciation Tools",
-              features: [
-                "Pinyin display and practice",
-                "Tone recognition exercises",
-                "Audio recording capabilities",
-                "Speech analysis tools",
-              ],
-            },
-            {
-              title: "Adapted Reading Features",
-              features: [
-                "Chinese text optimization",
-                "Character-based progress",
-                "Chinese-specific exercises",
-                "Adaptive difficulty",
-              ],
-            },
-            {
-              title: "Educational Management",
-              features: [
-                "Classroom management",
-                "Student progress tracking",
-                "Assignment creation",
-                "Performance analytics",
-              ],
-            },
-          ].map((feature) => (
+          {features.map((feature) => (
             <div key={feature.title} className="relative overflow-hidden rounded-lg border bg-background p-6">
               <h3 className="font-bold text-xl mb-4">{feature.title}</h3>
               <ul className="space-y-2">
@@ -109,27 +129,14 @@ export default function Home() {
       <section className="container py-20 bg-muted">
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
           <h2 className="font-heading text-3xl font-bold leading-[1.1] sm:text-4xl">
-            Built with Modern Technology
+            {t("pages.indexPage.technology.title")}
           </h2>
           <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            Powered by Next.js 14 and specialized Chinese language processing tools
+            {t("pages.indexPage.technology.description")}
           </p>
         </div>
         <div className="mx-auto grid gap-8 sm:grid-cols-3 md:max-w-[64rem] mt-12">
-          {[
-            {
-              title: "Frontend",
-              description: "Next.js 14, TypeScript, Tailwind CSS, and specialized Chinese text processing",
-            },
-            {
-              title: "Backend",
-              description: "PostgreSQL with Unicode support, Prisma ORM, and Firebase Authentication",
-            },
-            {
-              title: "Processing",
-              description: "HanziWriter for animations, chinese-tokenizer for text segmentation",
-            },
-          ].map((tech) => (
+          {techSections.map((tech) => (
             <div key={tech.title} className="flex flex-col items-center text-center p-4">
               <h3 className="text-xl font-bold mb-2">{tech.title}</h3>
               <p className="text-sm text-muted-foreground">{tech.description}</p>
@@ -142,12 +149,12 @@ export default function Home() {
       <section className="container py-20">
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
           <h2 className="font-heading text-3xl font-bold leading-[1.1] sm:text-4xl">
-            Start Your Chinese Learning Journey
+            {t("pages.indexPage.cta.title")}
           </h2>
           <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7 mb-8">
-            Join our comprehensive platform and master Chinese language with confidence
+            {t("pages.indexPage.cta.description")}
           </p>
-          <Button size="lg" className="h-12">Begin Free Trial</Button>
+          <Button size="lg" className="h-12">{t("pages.indexPage.cta.button")}</Button>
         </div>
       </section>
     </>

@@ -4,6 +4,11 @@
 
 ### Core Libraries
 
+- next-international for i18n
+  - Middleware-based locale routing
+  - Dynamic translation loading
+  - Type-safe translations
+  - Support for multiple locales
 - Framer Motion for animations
 - chinese-tokenizer for text segmentation
 - hanzi-writer-data for character data
@@ -15,6 +20,9 @@
 - GitHub Actions for CI/CD
 - ESLint & Prettier
 - Chinese language IDE support
+  - Unicode character handling
+  - Multi-locale syntax highlighting
+  - Character input method support
 - Font preview tools
 - Audio testing tools
 
@@ -23,6 +31,9 @@
 ### Database Configuration
 
 - Unicode support configuration
+  - UTF-8 encoding for all text fields
+  - Collation settings for Chinese characters
+  - Multi-language text indexing
 - Chinese character field indexing
 - Full-text search optimization
 - Character data caching strategy
