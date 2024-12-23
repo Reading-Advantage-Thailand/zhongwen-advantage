@@ -18,8 +18,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useState } from "react";
+import { useChangeLocale, useCurrentLocale } from "@/locales/client";
+import { localeNames, type Locale } from "@/configs/locale-config";
 
 export function Header() {
+  const changeLocale = useChangeLocale();
+  const currentLocale = useCurrentLocale();
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const segment = useSelectedLayoutSegment();
   const { user, loading } = useAuth();
@@ -74,6 +78,25 @@ export function Header() {
         {/* Desktop Navigation */}
         <div className="flex flex-1 items-center justify-end space-x-4">
           <nav className="hidden md:flex items-center space-x-6">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="flex items-center gap-2">
+                  <Icons.globe className="h-4 w-4" />
+                  {localeNames[currentLocale as Locale]}
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                {Object.entries(localeNames).map(([locale, name]) => (
+                  <DropdownMenuItem
+                    key={locale}
+                    className="cursor-pointer"
+                    onClick={() => changeLocale(locale as Locale)}
+                  >
+                    {name}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
             {!loading && (
               <>
                 {user ? (
@@ -156,6 +179,25 @@ export function Header() {
                 <>
                   {user ? (
                     <div className="space-y-4">
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button variant="ghost" className="w-full justify-start">
+                            <Icons.globe className="mr-2 h-4 w-4" />
+                            {localeNames[currentLocale as Locale]}
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent>
+                          {Object.entries(localeNames).map(([locale, name]) => (
+                            <DropdownMenuItem
+                              key={locale}
+                              className="cursor-pointer"
+                              onClick={() => changeLocale(locale as Locale)}
+                            >
+                              {name}
+                            </DropdownMenuItem>
+                          ))}
+                        </DropdownMenuContent>
+                      </DropdownMenu>
                       <div className="flex items-center gap-4">
                         <Avatar>
                           <AvatarImage src={user.photoURL || undefined} />

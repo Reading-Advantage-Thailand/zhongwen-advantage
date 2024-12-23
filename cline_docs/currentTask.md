@@ -7,7 +7,7 @@ Implement internationalization across the application:
 - [x] Import i18n system from Reading Advantage
 - [x] Set up locale-based routing
 - [x] Internationalize main page
-- [ ] Add locale switcher on header component
+- [x] Add locale switcher on header component
 - [ ] Internationalize remaining components
 
 ## Implementation Status

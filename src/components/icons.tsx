@@ -14,6 +14,7 @@ import {
   Settings,
   LogOut,
   Loader2,
+  Globe,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -32,6 +33,7 @@ export const Icons = {
   settings: Settings,
   logout: LogOut,
   spinner: Loader2,
+  globe: Globe,
   logo: ({ ...props }: LucideProps) => (
     <svg
       version="1.0"
