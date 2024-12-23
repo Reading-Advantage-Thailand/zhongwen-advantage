@@ -1,8 +1,77 @@
 export default {
   pages: {
     indexPage: {
-      description: "综合阅读应用, 集成了AI。目前正在进行Beta测试。",
-      getStartedButton: "开始",
+      hero: {
+        title: "自信掌握中文",
+        description: "专为中文学习设计的Reading Advantage改编版本",
+        startLearningButton: "立即开始学习",
+        placementTestButton: "参加分级测试"
+      },
+      features: {
+        title: "全面的学习功能",
+        description: "我们的平台将先进技术与经过验证的学习方法相结合",
+        sections: {
+          characterLearning: {
+            title: "汉字学习系统",
+            features: {
+              1: "笔顺可视化",
+              2: "汉字结构分析",
+              3: "部首学习组件",
+              4: "繁简体支持"
+            }
+          },
+          pronunciation: {
+            title: "发音工具",
+            features: {
+              1: "拼音显示和练习",
+              2: "声调识别练习",
+              3: "录音功能",
+              4: "语音分析工具"
+            }
+          },
+          reading: {
+            title: "适应性阅读功能",
+            features: {
+              1: "中文文本优化",
+              2: "基于汉字的进度",
+              3: "中文专项练习",
+              4: "自适应难度"
+            }
+          },
+          management: {
+            title: "教育管理",
+            features: {
+              1: "课堂管理",
+              2: "学生进度跟踪",
+              3: "作业创建",
+              4: "表现分析"
+            }
+          }
+        }
+      },
+      technology: {
+        title: "采用现代技术构建",
+        description: "由Next.js 14和专业中文语言处理工具驱动",
+        sections: {
+          frontend: {
+            title: "前端",
+            description: "Next.js 14、TypeScript、Tailwind CSS和专业中文文本处理"
+          },
+          backend: {
+            title: "后端",
+            description: "支持Unicode的PostgreSQL、Prisma ORM和Firebase身份验证"
+          },
+          processing: {
+            title: "处理",
+            description: "HanziWriter用于动画，chinese-tokenizer用于文本分段"
+          }
+        }
+      },
+      cta: {
+        title: "开启您的中文学习之旅",
+        description: "加入我们全面的平台，自信掌握中文语言",
+        button: "开始免费试用"
+      }
     },
     loginPage: {
       loginDescription: "登录到您的账户",

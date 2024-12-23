@@ -1,9 +1,77 @@
 export default {
   pages: {
     indexPage: {
-      description:
-        "Ứng dụng đọc sách đa dạng tích hợp trí tuệ nhân tạo. Phiên bản beta và đang trong quá trình thử nghiệm.",
-      getStartedButton: "Bắt đầu",
+      hero: {
+        title: "Tự tin làm chủ tiếng Trung",
+        description: "Phiên bản Reading Advantage được điều chỉnh đặc biệt cho việc học tiếng Trung",
+        startLearningButton: "Bắt đầu học ngay",
+        placementTestButton: "Làm bài kiểm tra xếp lớp"
+      },
+      features: {
+        title: "Tính năng học tập toàn diện",
+        description: "Nền tảng của chúng tôi kết hợp công nghệ tiên tiến với phương pháp học tập đã được kiểm chứng",
+        sections: {
+          characterLearning: {
+            title: "Hệ thống học chữ Hán",
+            features: {
+              1: "Hiển thị thứ tự nét chữ",
+              2: "Phân tích cấu trúc chữ",
+              3: "Học thành phần bộ thủ",
+              4: "Hỗ trợ chữ giản thể và phồn thể"
+            }
+          },
+          pronunciation: {
+            title: "Công cụ phát âm",
+            features: {
+              1: "Hiển thị và luyện tập pinyin",
+              2: "Bài tập nhận biết thanh điệu",
+              3: "Khả năng ghi âm",
+              4: "Công cụ phân tích giọng nói"
+            }
+          },
+          reading: {
+            title: "Tính năng đọc thích ứng",
+            features: {
+              1: "Tối ưu hóa văn bản tiếng Trung",
+              2: "Tiến độ dựa trên chữ Hán",
+              3: "Bài tập chuyên biệt tiếng Trung",
+              4: "Độ khó tự điều chỉnh"
+            }
+          },
+          management: {
+            title: "Quản lý giáo dục",
+            features: {
+              1: "Quản lý lớp học",
+              2: "Theo dõi tiến độ học sinh",
+              3: "Tạo bài tập",
+              4: "Phân tích hiệu suất"
+            }
+          }
+        }
+      },
+      technology: {
+        title: "Xây dựng với công nghệ hiện đại",
+        description: "Được hỗ trợ bởi Next.js 14 và các công cụ xử lý ngôn ngữ Trung Quốc chuyên biệt",
+        sections: {
+          frontend: {
+            title: "Giao diện người dùng",
+            description: "Next.js 14, TypeScript, Tailwind CSS và xử lý văn bản tiếng Trung chuyên biệt"
+          },
+          backend: {
+            title: "Hệ thống phía sau",
+            description: "PostgreSQL với hỗ trợ Unicode, Prisma ORM và xác thực Firebase"
+          },
+          processing: {
+            title: "Xử lý",
+            description: "HanziWriter cho hoạt ảnh, chinese-tokenizer cho phân đoạn văn bản"
+          }
+        }
+      },
+      cta: {
+        title: "Bắt đầu hành trình học tiếng Trung của bạn",
+        description: "Tham gia nền tảng toàn diện của chúng tôi và làm chủ tiếng Trung một cách tự tin",
+        button: "Dùng thử miễn phí"
+      }
     },
     loginPage: {
       loginDescription: "Đăng nhập vào tài khoản của bạn",

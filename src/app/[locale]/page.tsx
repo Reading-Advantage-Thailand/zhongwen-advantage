@@ -9,37 +9,37 @@ export default async function Home() {
     {
       title: t("pages.indexPage.features.sections.characterLearning.title"),
       features: [
-        "Stroke order visualization",
-        "Character breakdown analysis",
-        "Radical learning components",
-        "Traditional/Simplified support",
+        t("pages.indexPage.features.sections.characterLearning.features.1"),
+        t("pages.indexPage.features.sections.characterLearning.features.2"),
+        t("pages.indexPage.features.sections.characterLearning.features.3"),
+        t("pages.indexPage.features.sections.characterLearning.features.4"),
       ],
     },
     {
       title: t("pages.indexPage.features.sections.pronunciation.title"),
       features: [
-        "Pinyin display and practice",
-        "Tone recognition exercises",
-        "Audio recording capabilities",
-        "Speech analysis tools",
+        t("pages.indexPage.features.sections.pronunciation.features.1"),
+        t("pages.indexPage.features.sections.pronunciation.features.2"),
+        t("pages.indexPage.features.sections.pronunciation.features.3"),
+        t("pages.indexPage.features.sections.pronunciation.features.4"),
       ],
     },
     {
       title: t("pages.indexPage.features.sections.reading.title"),
       features: [
-        "Chinese text optimization",
-        "Character-based progress",
-        "Chinese-specific exercises",
-        "Adaptive difficulty",
+        t("pages.indexPage.features.sections.reading.features.1"),
+        t("pages.indexPage.features.sections.reading.features.2"),
+        t("pages.indexPage.features.sections.reading.features.3"),
+        t("pages.indexPage.features.sections.reading.features.4"),
       ],
     },
     {
       title: t("pages.indexPage.features.sections.management.title"),
       features: [
-        "Classroom management",
-        "Student progress tracking",
-        "Assignment creation",
-        "Performance analytics",
+        t("pages.indexPage.features.sections.management.features.1"),
+        t("pages.indexPage.features.sections.management.features.2"),
+        t("pages.indexPage.features.sections.management.features.3"),
+        t("pages.indexPage.features.sections.management.features.4"),
       ],
     },
   ]

@@ -1,8 +1,77 @@
 export default {
   pages: {
     indexPage: {
-      description: "綜合閱讀應用，集成了AI。目前正在進行Beta測試。",
-      getStartedButton: "開始",
+      hero: {
+        title: "自信掌握中文",
+        description: "專為中文學習設計的Reading Advantage改編版本",
+        startLearningButton: "立即開始學習",
+        placementTestButton: "參加分級測試"
+      },
+      features: {
+        title: "全面的學習功能",
+        description: "我們的平台將先進技術與經過驗證的學習方法相結合",
+        sections: {
+          characterLearning: {
+            title: "漢字學習系統",
+            features: {
+              1: "筆順可視化",
+              2: "漢字結構分析",
+              3: "部首學習組件",
+              4: "繁簡體支援"
+            }
+          },
+          pronunciation: {
+            title: "發音工具",
+            features: {
+              1: "拼音顯示和練習",
+              2: "聲調識別練習",
+              3: "錄音功能",
+              4: "語音分析工具"
+            }
+          },
+          reading: {
+            title: "適應性閱讀功能",
+            features: {
+              1: "中文文本優化",
+              2: "基於漢字的進度",
+              3: "中文專項練習",
+              4: "自適應難度"
+            }
+          },
+          management: {
+            title: "教育管理",
+            features: {
+              1: "課堂管理",
+              2: "學生進度追蹤",
+              3: "作業創建",
+              4: "表現分析"
+            }
+          }
+        }
+      },
+      technology: {
+        title: "採用現代技術構建",
+        description: "由Next.js 14和專業中文語言處理工具驅動",
+        sections: {
+          frontend: {
+            title: "前端",
+            description: "Next.js 14、TypeScript、Tailwind CSS和專業中文文本處理"
+          },
+          backend: {
+            title: "後端",
+            description: "支援Unicode的PostgreSQL、Prisma ORM和Firebase身份驗證"
+          },
+          processing: {
+            title: "處理",
+            description: "HanziWriter用於動畫，chinese-tokenizer用於文本分段"
+          }
+        }
+      },
+      cta: {
+        title: "開啟您的中文學習之旅",
+        description: "加入我們全面的平台，自信掌握中文語言",
+        button: "開始免費試用"
+      }
     },
     loginPage: {
       loginDescription: "登入到您的帳戶",
