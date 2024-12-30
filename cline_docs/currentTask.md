@@ -6,6 +6,7 @@ Import and adapt user account management components from ra-source:
 
 - [x] Import user-account-nav.tsx [IN PROGRESS]
   - [x] Create test file with Chinese language tests
+  - [x] Add proper ARIA attributes for Chinese text
   - [ ] Copy from ra-source/web/components/user/user-account-nav.tsx
   - [ ] Copy from ra-source/web/components/user/user-account-nav.tsx
   - [ ] Update imports to match our structure
