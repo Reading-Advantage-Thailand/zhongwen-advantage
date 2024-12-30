@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { UserAccountNav } from '../user-account-nav'
 import { useAuth } from '@/hooks/use-auth'
 import { mockUser } from '@/lib/test-utils'
@@ -43,21 +44,22 @@ describe('UserAccountNav', () => {
     expect(screen.getByTestId('loading-spinner')).toBeInTheDocument()
   })
 
-  it('should render navigation menu items in Chinese', () => {
+  it('should render navigation menu items in Chinese', async () => {
     mockUseAuth.mockReturnValue({
       user: mockUser,
       loading: false
     })
 
+    const user = userEvent.setup()
     render(<UserAccountNav />)
     
     // Click the avatar to open the dropdown
-    const avatar = screen.getByTestId('user-avatar')
-    avatar.click()
+    const trigger = screen.getByRole('button', { name: /用户头像/i })
+    await user.click(trigger)
     
     // Now check for menu items
-    expect(screen.getByText(/个人资料/i)).toBeInTheDocument()
-    expect(screen.getByText(/设置/i)).toBeInTheDocument() 
-    expect(screen.getByText(/登出/i)).toBeInTheDocument()
+    expect(screen.getByRole('menuitem', { name: /个人资料/i })).toBeInTheDocument()
+    expect(screen.getByRole('menuitem', { name: /设置/i })).toBeInTheDocument()
+    expect(screen.getByRole('menuitem', { name: /登出/i })).toBeInTheDocument()
   })
 })
