@@ -102,6 +102,8 @@ Implement internationalization across the application:
 - [x] Set up role-based routing
 - [x] Implement main page translations
 - [x] Move to [locale] directory structure
+- [x] Add translation keys for feature lists
+
 
 ## Next Phase
 
@@ -109,6 +111,5 @@ Implement internationalization across the application:
    - Authentication components
    - Navigation components
    - User profile components
-2. Add translation keys for feature lists
-3. Test language switching functionality
-4. Implement language preference persistence
+2. Test language switching functionality
+3. Implement language preference persistence
