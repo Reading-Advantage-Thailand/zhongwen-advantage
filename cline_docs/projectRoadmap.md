@@ -103,9 +103,9 @@ Maximize direct import of Reading Advantage's proven codebase, modifying compone
   - [x] Import user-signin-form.tsx (Issue #2)
   - [x] Import user-signup-form.tsx (Issue #2)
   - [x] Import user-reset-pass-form.tsx (Issue #2)
-  - [ ] Import user-account-nav.tsx (Issue #3)
-  - [ ] Import user-avatar.tsx (Issue #3)
-  - [ ] Import change-username-form.tsx (Issue #3)
+  - [x] Import user-account-nav.tsx (Issue #3) [IN PROGRESS]
+  - [x] Import user-avatar.tsx (Issue #3) [IN PROGRESS]
+  - [x] Import change-username-form.tsx (Issue #3) [IN PROGRESS]
   - [ ] Import user-role-management.tsx (Issue #4)
 
 - [ ] System Components
