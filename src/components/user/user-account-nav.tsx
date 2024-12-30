@@ -36,7 +36,7 @@ export function UserAccountNav() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger aria-label="用户头像">
         <Avatar className="h-8 w-8" data-testid="user-avatar">
           <AvatarImage src={user.photoURL || undefined} alt={user.displayName || "用户头像"} />
           <AvatarFallback>{user.displayName?.[0] || "用"}</AvatarFallback>
@@ -56,15 +56,16 @@ export function UserAccountNav() {
           </div>
         </div>
         <DropdownMenuSeparator />
-        <DropdownMenuItem asChild>
+        <DropdownMenuItem asChild role="menuitem">
           <Link href="/dashboard">个人资料</Link>
         </DropdownMenuItem>
-        <DropdownMenuItem asChild>
+        <DropdownMenuItem asChild role="menuitem">
           <Link href="/dashboard/settings">设置</Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem
           className="cursor-pointer"
+          role="menuitem"
           onSelect={(event) => {
             event.preventDefault()
             // TODO: Add signOut functionality
