@@ -50,8 +50,14 @@ describe('UserAccountNav', () => {
     })
 
     render(<UserAccountNav />)
+    
+    // Click the avatar to open the dropdown
+    const avatar = screen.getByTestId('user-avatar')
+    avatar.click()
+    
+    // Now check for menu items
     expect(screen.getByText(/个人资料/i)).toBeInTheDocument()
-    expect(screen.getByText(/设置/i)).toBeInTheDocument()
+    expect(screen.getByText(/设置/i)).toBeInTheDocument() 
     expect(screen.getByText(/登出/i)).toBeInTheDocument()
   })
 })
