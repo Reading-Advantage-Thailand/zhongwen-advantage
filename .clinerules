@@ -29,25 +29,42 @@ doc_update_rules:
 
 ## Task Management
 task_workflow:
+  validation:
+    pre_task_checks:
+      - check_source_exists: "Verify if component/page exists in ra-source before creating new one"
+      - check_test_exists: "Verify test file exists before component implementation"
+      - check_branch_exists: "Verify task branch exists before code changes"
+      - check_issue_exists: "Verify GitHub issue exists before starting work"
+
+    enforcement:
+      prevent_direct_writes: true # Prevent writing new components without checking ra-source
+      require_tests_first: true # Enforce TDD by requiring test file creation first
+      require_issue: true # Require GitHub issue before any code changes
+      require_branch: true # Require task-specific branch before any code changes
+
   creation:
     script: "./scripts/create-task-issue.ts"
     requirements:
       - github_cli: "GitHub CLI (gh) must be installed"
       - git: "Git must be initialized in the repository"
       - permissions: "GitHub authentication configured in gh CLI"
+      - source_check: "Verify component doesn't already exist in ra-source"
 
     execution:
       command: 'ts-node create-task-issue.ts "Issue Title" "Issue Body"'
       automated_actions:
+        - "Checks ra-source for existing component"
         - "Creates GitHub issue with provided title and body"
         - "Creates and switches to task-specific branch"
         - "Updates currentTask.md with issue details"
+        - "Creates test file template"
         - "Adds standard workflow checklist to issue"
 
     output:
       - issue_url: "URL of created GitHub issue"
       - branch_name: "task/{issue-number}-{sanitized-title}"
       - current_task: "Updated currentTask.md file"
+      - test_file: "Path to created test file"
 
     templates:
       component_import:
@@ -172,18 +189,26 @@ import_process:
       - rtl_support: "Verify right-to-left text support"
 
   import_workflow:
+    0_verification:
+      - check_source: "Verify component exists in ra-source"
+      - analyze_dependencies: "List all required dependencies"
+      - check_conflicts: "Check for naming or path conflicts"
+
     1_preparation:
       - create_feature_branch: "Create branch for component import"
       - setup_test_files: "Create test files for component"
       - document_requirements: "List component requirements and dependencies"
+      - setup_test_environment: "Configure testing tools and mocks"
 
     2_testing:
       - write_tests: "Write tests before importing component"
       - validate_tests: "Ensure tests fail appropriately"
       - document_test_cases: "Document test scenarios and edge cases"
+      - commit_tests: "Commit test files before implementation"
 
     3_implementation:
-      - import_component: "Copy component to target directory"
+      - import_component: "Copy component from ra-source to target directory"
+      - maintain_structure: "Keep original file structure and naming"
       - adapt_code: "Modify for Chinese language support"
       - update_dependencies: "Update imports and dependencies"
       - implement_changes: "Add Chinese-specific features"
@@ -224,13 +249,29 @@ import_process:
       - platform_check: "Test on different platforms"
 
 import_rules:
+  source_verification:
+    - check_existence: "Verify component exists in ra-source"
+    - analyze_structure: "Document original file structure"
+    - list_dependencies: "Catalog all dependencies"
+    - identify_integrations: "Map integration points"
+
   direct_import:
     - verify: "component_compatibility"
     - maintain: "original_structure"
+    - preserve: "file_organization"
+    - copy: "complete_component"
+
   chinese_adaptation:
     - verify: "character_support"
     - add: "chinese_specific_features"
     - test: "language_compatibility"
+    - optimize: "chinese_performance"
+
+  workflow_enforcement:
+    prevent_new_components: true # Prevent creating new components that should be imported
+    require_source_check: true # Require checking ra-source before any new development
+    maintain_structure: true # Enforce maintaining original file structure
+    require_tdd: true # Enforce test-driven development approach
 
 ## Code Organization
 directory_structure:
