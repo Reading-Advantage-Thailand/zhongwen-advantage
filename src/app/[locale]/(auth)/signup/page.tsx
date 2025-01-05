@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { GoogleAuthButton } from "@/components/ui/google-auth-button";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
