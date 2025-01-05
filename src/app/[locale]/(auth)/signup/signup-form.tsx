@@ -19,6 +19,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { Icons } from "@/components/icons";
+import { Loader2 } from "lucide-react";
 
 const signUpSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -142,7 +143,7 @@ export function SignUpForm() {
         />
         <Button type="submit" className="w-full" disabled={isLoading}>
           {isLoading && (
-            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
           )}
           Create account
         </Button>
