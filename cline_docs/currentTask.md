@@ -53,6 +53,31 @@ Import and adapt user account management components from ra-source:
 - Type-safe translations
 - Integration with existing auth system
 
+## Current Issues
+
+1. UserAvatar Component Test Failures
+   - Test cannot find accessible img element
+   - Need to fix ARIA attributes and roles in UserAvatar component
+   - Ensure proper accessibility for Chinese character display
+
+## Next Steps
+
+1. Fix UserAvatar Component
+   - Add proper role="img" to Avatar component
+   - Ensure aria-label is correctly applied
+   - Test with various Chinese names
+   - Verify accessibility standards
+
+2. Install Missing Dependencies
+   - Install axios for API tests
+   - Install firebase-admin for function tests
+   - Install react-toastify for notification tests
+
+3. Clean Up Test Environment
+   - Set up proper test mocks for Firebase Auth
+   - Configure Jest to handle Next.js imports
+   - Add missing test utilities
+
 ## Implementation Status
 
 ### Completed
