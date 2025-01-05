@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 import { Button } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
+import { Loader2 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 
 interface GoogleAuthButtonProps {
@@ -49,7 +50,7 @@ export function GoogleAuthButton({ mode }: GoogleAuthButtonProps) {
       onClick={handleGoogleAuth}
     >
       {isLoading ? (
-        <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
       ) : (
         <Icons.google className="mr-2 h-4 w-4" />
       )}
