@@ -4,20 +4,19 @@
 
 Import and adapt user account management components from ra-source:
 
-- [x] Import user-account-nav.tsx [IN PROGRESS]
+- [x] Import user-account-nav.tsx
   - [x] Create test file with Chinese language tests
   - [x] Add proper ARIA attributes for Chinese text
-  - [ ] Copy from ra-source/web/components/user/user-account-nav.tsx
-  - [ ] Copy from ra-source/web/components/user/user-account-nav.tsx
-  - [ ] Update imports to match our structure
-  - [ ] Integrate with our authentication system
-  - [ ] Add i18n support for menu items
+  - [x] Copy from ra-source/web/components/user/user-account-nav.tsx
+  - [x] Update imports to match our structure
+  - [x] Integrate with our authentication system
+  - [x] Add i18n support for menu items
   
-- [ ] Import user-avatar.tsx
-  - [ ] Copy from ra-source/web/components/user/user-avatar.tsx
-  - [ ] Update image handling for Chinese names
-  - [ ] Add proper alt text translations
-  - [ ] Test with various Chinese character lengths
+- [x] Import user-avatar.tsx
+  - [x] Copy from ra-source/web/components/user/user-avatar.tsx
+  - [x] Update image handling for Chinese names
+  - [x] Add proper alt text translations
+  - [x] Test with various Chinese character lengths
 
 - [ ] Import change-username-form.tsx
   - [ ] Copy from ra-source/web/components/user/change-username-form.tsx

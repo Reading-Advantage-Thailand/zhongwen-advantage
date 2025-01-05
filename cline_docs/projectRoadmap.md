@@ -103,12 +103,8 @@ Maximize direct import of Reading Advantage's proven codebase, modifying compone
   - [x] Import user-signin-form.tsx (Issue #2)
   - [x] Import user-signup-form.tsx (Issue #2)
   - [x] Import user-reset-pass-form.tsx (Issue #2)
-  - [ ] Import user-account-nav.tsx (Issue #3)
-      - Source: ra-source/web/components/user/user-account-nav.tsx
-      - Status: In Progress - Test file created, implementing TDD approach
-  - [ ] Import user-avatar.tsx (Issue #3)
-      - Source: ra-source/web/components/user/user-avatar.tsx
-      - Status: In Progress - Testing Chinese names
+  - [x] Import user-account-nav.tsx (Issue #3)
+  - [x] Import user-avatar.tsx (Issue #3)
   - [ ] Import change-username-form.tsx (Issue #3)
       - Source: ra-source/web/components/user/change-username-form.tsx
       - Status: In Progress - Adding validation
