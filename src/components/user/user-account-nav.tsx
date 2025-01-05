@@ -11,6 +11,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { useAuth } from "@/hooks/use-auth"
+import { getAuth, signOut } from "firebase/auth"
 import { Loader2 } from "lucide-react"
 
 export function UserAccountNav() {
@@ -68,7 +69,8 @@ export function UserAccountNav() {
           role="menuitem"
           onSelect={(event) => {
             event.preventDefault()
-            // TODO: Add signOut functionality
+            const auth = getAuth()
+            signOut(auth).catch(console.error)
           }}
         >
           登出

@@ -3,6 +3,12 @@ import userEvent from '@testing-library/user-event'
 import { UserAccountNav } from '../user-account-nav'
 import { useAuth } from '@/hooks/use-auth'
 import { mockUser } from '@/lib/test-utils'
+import { getAuth, signOut } from 'firebase/auth'
+
+jest.mock('firebase/auth', () => ({
+  getAuth: jest.fn(),
+  signOut: jest.fn()
+}))
 
 // Mock useAuth hook
 jest.mock('@/hooks/use-auth')
@@ -61,5 +67,30 @@ describe('UserAccountNav', () => {
     expect(screen.getByRole('menuitem', { name: /个人资料/i })).toBeInTheDocument()
     expect(screen.getByRole('menuitem', { name: /设置/i })).toBeInTheDocument()
     expect(screen.getByRole('menuitem', { name: /登出/i })).toBeInTheDocument()
+  })
+
+  it('should call signOut when logout is clicked', async () => {
+    mockUseAuth.mockReturnValue({
+      user: mockUser,
+      loading: false
+    })
+
+    const mockAuth = {}
+    ;(getAuth as jest.Mock).mockReturnValue(mockAuth)
+    ;(signOut as jest.Mock).mockResolvedValue(undefined)
+
+    const user = userEvent.setup()
+    render(<UserAccountNav />)
+    
+    // Click the avatar to open the dropdown
+    const trigger = screen.getByRole('button', { name: /用户头像/i })
+    await user.click(trigger)
+    
+    // Click the logout button
+    const logoutButton = screen.getByRole('menuitem', { name: /登出/i })
+    await user.click(logoutButton)
+
+    expect(getAuth).toHaveBeenCalled()
+    expect(signOut).toHaveBeenCalledWith(mockAuth)
   })
 })
