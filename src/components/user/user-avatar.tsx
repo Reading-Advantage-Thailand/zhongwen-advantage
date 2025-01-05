@@ -20,7 +20,9 @@ export function UserAvatar({ user, size = "sm" }: UserAvatarProps) {
     >
       <AvatarImage 
         src={user.photoURL || undefined} 
-        alt={user.displayName || "用户头像"} 
+        alt={user.displayName || "用户头像"}
+        role="img"
+        aria-label={user.displayName || "用户头像"}
       />
       <AvatarFallback>
         {user.displayName?.[0] || "用"}
