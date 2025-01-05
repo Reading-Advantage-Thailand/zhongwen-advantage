@@ -17,14 +17,14 @@ export function UserAvatar({ user, size = "sm" }: UserAvatarProps) {
     <Avatar 
       className={cn(sizeClasses[size])}
       data-testid="user-avatar"
+      role="img"
+      aria-label={user.displayName || "用户头像"}
     >
       <AvatarImage 
         src={user.photoURL || undefined} 
         alt={user.displayName || "用户头像"}
-        role="img"
-        aria-label={user.displayName || "用户头像"}
       />
-      <AvatarFallback>
+      <AvatarFallback aria-hidden="true">
         {user.displayName?.[0] || "用"}
       </AvatarFallback>
     </Avatar>

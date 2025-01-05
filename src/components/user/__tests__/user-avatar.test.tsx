@@ -3,7 +3,7 @@ import { UserAvatar } from '../user-avatar'
 import { mockUser } from '@/lib/test-utils'
 
 describe('UserAvatar', () => {
-  it('should render user avatar with image when provided', () => {
+  it('should render user avatar with image and proper accessibility attributes', () => {
     render(
       <UserAvatar
         user={{
@@ -16,9 +16,10 @@ describe('UserAvatar', () => {
 
     const avatar = screen.getByRole('img', { name: '张伟' })
     expect(avatar).toBeInTheDocument()
+    expect(avatar).toHaveAttribute('aria-label', '张伟')
   })
 
-  it('should render fallback with first character of name', () => {
+  it('should render fallback with first character of Chinese name', () => {
     render(
       <UserAvatar
         user={{
@@ -29,11 +30,14 @@ describe('UserAvatar', () => {
       />
     )
 
+    const avatar = screen.getByRole('img', { name: '李明' })
     const fallback = screen.getByText('李')
+    expect(avatar).toBeInTheDocument()
     expect(fallback).toBeInTheDocument()
+    expect(fallback).toHaveAttribute('aria-hidden', 'true')
   })
 
-  it('should render default fallback when no name provided', () => {
+  it('should render default fallback with proper accessibility when no name provided', () => {
     render(
       <UserAvatar
         user={{
@@ -44,8 +48,11 @@ describe('UserAvatar', () => {
       />
     )
 
+    const avatar = screen.getByRole('img', { name: '用户头像' })
     const fallback = screen.getByText('用')
+    expect(avatar).toBeInTheDocument()
     expect(fallback).toBeInTheDocument()
+    expect(fallback).toHaveAttribute('aria-hidden', 'true')
   })
 
   it('should handle different sizes', () => {
