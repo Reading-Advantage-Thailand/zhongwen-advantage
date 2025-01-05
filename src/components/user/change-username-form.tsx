@@ -72,7 +72,7 @@ export function ChangeUsernameForm({ user }: ChangeUsernameFormProps) {
               <FormControl>
                 <Input {...field} />
               </FormControl>
-              <FormMessage role="alert" />
+              <FormMessage className="text-destructive" aria-live="polite" role="alert" />
             </FormItem>
           )}
         />
