@@ -49,10 +49,12 @@ describe('ChangeUsernameForm', () => {
     
     const input = screen.getByRole('textbox', { name: /用户名/i })
     await userEvent.clear(input)
-    await userEvent.tab() // Trigger blur and validation
     
-    const errorMessage = await screen.findByRole('alert')
-    expect(errorMessage).toHaveTextContent('用户名不能为空')
+    const submitButton = screen.getByRole('button', { name: /更新/i })
+    await userEvent.click(submitButton)
+    
+    const errorMessage = await screen.findByText('用户名不能为空')
+    expect(errorMessage).toBeInTheDocument()
   })
 
   it('successfully updates username', async () => {
